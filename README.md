@@ -107,8 +107,10 @@ public enum itemType
 ### 步骤3: 使用数据
 ```csharp
 // 在代码中访问数据
-var item = DataManager.ItemData.Get(1001);
+var item = DataManager.ItemData.GetById(1001);
 Debug.Log(item.name); // 输出: "长剑"
+var item1 = DataManager.ItemData.GetByIndex(0);
+var count = DataManager.ItemData.Count;
 ```
 
 ## 支持的字段类型详解
