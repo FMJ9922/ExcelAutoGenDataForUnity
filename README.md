@@ -1,2 +1,244 @@
-# ExcelAutoGenDataForUnity
-A Unity editor tool that automatically converts your game design spreadsheets into ready-to-use JSON data and C# code. Simply edit your Excel files, save, and access new fields instantly in Unity—no manual setup required. Built for rapid, agile iteration in indie game development.
+# Excel导出工具 - 使用说明
+
+## 概述
+
+这是一个用于Unity项目的Excel数据表导出工具，能够将Excel表格自动转换为JSON配置文件和对应的C#数据类。工具使用EPPlus库读取Excel文件，支持多种数据类型，包括枚举类型和数组类型。
+
+## 主要功能
+
+### 1. 数据导出
+- 将Excel表格导出为JSON配置文件
+- 自动生成对应的C#数据类
+- 生成数据管理器（DataManager）的静态访问器
+
+### 2. 数据类型支持
+- **基本类型**: `int`, `int32`, `int64`, `long`, `float`, `double`, `string`
+- **数组类型**: `int[]`, `float[]`
+- **枚举类型**: `enum`（自动从数据中提取枚举值并生成枚举定义）
+
+### 3. 自动代码生成
+- 为每个Excel表生成对应的C#类
+- 自动生成枚举类型定义
+- 生成统一的数据管理器类，便于数据访问
+
+## Excel表格格式要求
+
+### 固定行结构
+| 行号 | 内容说明 | 示例 |
+|------|----------|------|
+| 第2行 | 字段名（属性名称） | `id`, `name`, `type` |
+| 第3行 | 字段类型（数据类型） | `int`, `string`, `enum` |
+| 第4行开始 | 数据行（实际数据） | `1`, `"武器"`, `"Sword"` |
+
+### Excel文件结构示例
+| A列 | B列 | C列 |
+|-----|-----|-----|
+| （第2行）字段名 | `id` | `name` | `itemType` |
+| （第3行）字段类型 | `int` | `string` | `enum` |
+| （第4行）数据行1 | `1001` | `"长剑"` | `"Weapon"` |
+| （第5行）数据行2 | `1002` | `"盾牌"` | `"Armor"` |
+
+## 输出文件
+
+### 1. JSON配置文件
+- 位置: `../Assets/Json/`
+- 格式: 包含所有数据行的JSON数组
+```json
+{
+  "datas": [
+    {
+      "id": 1001,
+      "name": "长剑",
+      "itemType": 0
+    },
+    {
+      "id": 1002,
+      "name": "盾牌",
+      "itemType": 1
+    }
+  ]
+}
+```
+
+### 2. C#数据类
+- 位置: `../Assets/Scripts/Data/`
+- 格式: 包含所有字段的序列化类
+```csharp
+using System;
+using Newtonsoft.Json;
+
+[Serializable]
+public class ItemData: IData
+{
+    [JsonProperty("id")]
+    public int id { get; set; }
+    
+    [JsonProperty("name")]
+    public string name { get; set; }
+    
+    [JsonProperty("itemType")]
+    public itemType itemTypeValue { get; set; }
+}
+```
+
+### 3. 枚举定义（如果存在枚举字段）
+```csharp
+public enum itemType
+{
+    Weapon = 0,
+    Armor = 1
+}
+```
+
+### 4. 数据管理器定义
+- 文件: `DataManagerDefine.cs`
+- 功能: 提供所有数据表的静态访问接口
+
+## 使用方法
+
+### 步骤1: 准备Excel文件
+1. 将Excel文件放入 `../Assets/Excel/` 目录
+2. 确保文件使用正确的格式（见上面的格式要求）
+3. 使用支持的字段类型
+
+### 步骤2: 导出数据
+在Unity编辑器中，点击菜单: **Tools → ExportExcel**
+
+### 步骤3: 使用数据
+```csharp
+// 在代码中访问数据
+var item = DataManager.ItemData.Get(1001);
+Debug.Log(item.name); // 输出: "长剑"
+```
+
+## 支持的字段类型详解
+
+### 1. 整型 (`int`, `int32`)
+- **Excel格式**: 纯数字（如 `123`, `-456`）
+- **JSON输出**: `123`
+- **C#类型**: `int`
+
+### 2. 长整型 (`int64`, `long`)
+- **Excel格式**: 纯数字（支持大数字）
+- **JSON输出**: `123456789012`
+- **C#类型**: `long`
+
+### 3. 浮点型 (`float`)
+- **Excel格式**: 小数（如 `3.14`, `.5`, `-2.5`）
+- **JSON输出**: `3.14`
+- **特殊处理**: 支持省略前导0的格式（如 `.5` → `0.5`）
+
+### 4. 双精度浮点型 (`double`)
+- **Excel格式**: 小数
+- **JSON输出**: `3.14159265358979`
+- **C#类型**: `double`
+
+### 5. 字符串 (`string`)
+- **Excel格式**: 任意文本
+- **JSON输出**: `"文本内容"`
+- **特殊处理**: 自动转义双引号
+
+### 6. 整型数组 (`int[]`)
+- **Excel格式**: 使用逗号分隔的数字（如 `1,2,3` 或 `[1,2,3]`）
+- **JSON输出**: `[1,2,3]`
+- **C#类型**: `int[]`
+
+### 7. 浮点型数组 (`float[]`)
+- **Excel格式**: 使用逗号分隔的小数（如 `1.5,2.3,3.14`）
+- **JSON输出**: `[1.5,2.3,3.14]`
+- **C#类型**: `float[]`
+
+### 8. 枚举类型 (`enum`)
+- **Excel格式**: 枚举值的文本表示（如 `"Weapon"`, `"Armor"`）
+- **JSON输出**: 枚举索引（整数，从0开始）
+- **C#类型**: 自动生成的枚举类型
+- **特性**: 
+  - 自动从数据中提取所有枚举值
+  - 生成对应的C#枚举定义
+  - 自动处理无效标识符（空格、特殊字符等）
+
+## 不支持的功能
+
+### 1. Excel功能限制
+- ❌ 只支持第一个工作表（Worksheet[1]）
+- ❌ 不支持Excel公式（只读取显示值）
+- ❌ 不支持合并单元格
+- ❌ 不支持多个工作表导出
+
+### 2. 数据类型限制
+- ❌ 不支持嵌套对象（如 `object`, `class` 类型）
+- ❌ 不支持字典类型
+- ❌ 不支持多维数组
+- ❌ 不支持 `bool` 类型（可使用 `int` 0/1 替代）
+- ❌ 不支持 `DateTime` 类型（可使用 `string` 或 `long` 时间戳替代）
+
+### 3. 其他限制
+- ❌ 不支持行/列的动态扩展
+- ❌ 不支持条件格式和样式
+- ❌ 不保留Excel中的注释
+- ❌ 不支持自定义导出格式
+
+## 错误处理
+
+### 1. 空值处理
+- 所有空单元格会自动转换为对应类型的默认值
+- 默认值：`int`→`0`, `float`→`0`, `string`→`""`, `数组`→`[]`
+
+### 2. 类型转换失败
+- 当类型转换失败时，会使用默认值并输出错误日志
+- 例如：将"abc"转换为int会得到0，并记录错误
+
+### 3. Excel格式错误
+- 如果第2行（属性行）有空值，会抛出异常
+- 文件路径不存在时会抛出异常
+
+## 目录结构要求
+
+```
+项目根目录/
+├── Assets/
+│   ├── Excel/          # 放置Excel文件
+│   ├── Json/           # 导出的JSON文件
+│   └── Scripts/
+│       └── Data/       # 导出的C#类文件
+```
+
+## 依赖项
+
+1. **EPPlus**: 用于读取Excel文件（需要单独安装）
+2. **Newtonsoft.Json**: 用于JSON序列化（需要单独安装）
+3. **Unity Editor**: 需要在Unity编辑器环境中运行
+
+## 注意事项
+
+1. **文件编码**: 确保Excel文件使用UTF-8编码
+2. **文件锁定**: 导出前请关闭Excel文件
+3. **数据类型一致性**: 同一列的数据类型必须一致
+4. **枚举值唯一性**: 枚举值在Excel中应该保持一致的大小写和格式
+5. **字段命名**: 字段名应符合C#标识符命名规范
+
+## 扩展建议
+
+如需扩展功能，您可以自行考虑：
+1. 添加 `bool` 类型支持
+2. 支持更多数组类型（如 `string[]`）
+3. 添加数据验证功能
+4. 支持导出为其他格式（如XML、二进制）
+5. 添加增量导出功能
+
+## 故障排除
+
+### 常见问题
+1. **导出失败**: 检查Excel文件是否被其他程序打开
+2. **数据类型错误**: 检查第3行的类型声明是否正确
+3. **JSON格式错误**: 检查字符串中是否包含未转义的双引号
+4. **枚举生成错误**: 检查枚举值是否包含非法字符
+
+### 日志查看
+所有错误信息都会输出到Unity控制台，包含详细的行列信息和错误原因。
+
+---
+
+**版本**: 1.0  
+**最后更新**: 2025/12/24
+**维护者**: 飞麦菌
