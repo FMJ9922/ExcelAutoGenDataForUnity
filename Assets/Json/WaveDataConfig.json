@@ -1,0 +1,246 @@
+{
+	"datas": [
+	{
+		"WaveId": 1,
+		"WaveInterval": [1],
+		"IsBossWave": 0,
+		"MonsterIds": [],
+		"MonsterNums": [1],
+		"SpawnPoints": [],
+		"HeroIds": [1017],
+		"FinishOptions": [],
+		"Range": []
+	},
+	{
+		"WaveId": 2,
+		"WaveInterval": [2,5,1,15,2,1,1,1,1,1],
+		"IsBossWave": 0,
+		"MonsterIds": [2003,2003,2003,2003,2003,2003,2003,2003,2003,2003],
+		"MonsterNums": [1,5,1,12,20,20,20,20,10,0],
+		"SpawnPoints": [9,9,9,10,10,10,10,10,10,10],
+		"HeroIds": [],
+		"FinishOptions": [],
+		"Range": [1,2,1,1,5,5,3,2,1,1]
+	},
+	{
+		"WaveId": 3,
+		"WaveInterval": [1],
+		"IsBossWave": 0,
+		"MonsterIds": [2003,2003],
+		"MonsterNums": [20,20],
+		"SpawnPoints": [9,9],
+		"HeroIds": [],
+		"FinishOptions": [],
+		"Range": [10,10]
+	},
+	{
+		"WaveId": 4,
+		"WaveInterval": [5],
+		"IsBossWave": 0,
+		"MonsterIds": [2005],
+		"MonsterNums": [10],
+		"SpawnPoints": [9],
+		"HeroIds": [],
+		"FinishOptions": [],
+		"Range": [3]
+	},
+	{
+		"WaveId": 5,
+		"WaveInterval": [5],
+		"IsBossWave": 0,
+		"MonsterIds": [2002],
+		"MonsterNums": [1],
+		"SpawnPoints": [3],
+		"HeroIds": [],
+		"FinishOptions": [],
+		"Range": [3]
+	},
+	{
+		"WaveId": 6,
+		"WaveInterval": [5],
+		"IsBossWave": 0,
+		"MonsterIds": [2002],
+		"MonsterNums": [10],
+		"SpawnPoints": [1],
+		"HeroIds": [],
+		"FinishOptions": [],
+		"Range": [3]
+	},
+	{
+		"WaveId": 10,
+		"WaveInterval": [1],
+		"IsBossWave": 0,
+		"MonsterIds": [],
+		"MonsterNums": [1,1],
+		"SpawnPoints": [],
+		"HeroIds": [1002,1004],
+		"FinishOptions": [],
+		"Range": []
+	},
+	{
+		"WaveId": 11,
+		"WaveInterval": [1,3],
+		"IsBossWave": 0,
+		"MonsterIds": [2003,2002],
+		"MonsterNums": [10,10],
+		"SpawnPoints": [10,9],
+		"HeroIds": [],
+		"FinishOptions": [1003,1002,1004],
+		"Range": [4,4]
+	},
+	{
+		"WaveId": 12,
+		"WaveInterval": [1,1,2],
+		"IsBossWave": 0,
+		"MonsterIds": [2002,2005,2006],
+		"MonsterNums": [20,10,1],
+		"SpawnPoints": [10,9,8],
+		"HeroIds": [],
+		"FinishOptions": [],
+		"Range": [4,4,1]
+	},
+	{
+		"WaveId": 20,
+		"WaveInterval": [1],
+		"IsBossWave": 0,
+		"MonsterIds": [],
+		"MonsterNums": [1,1,1],
+		"SpawnPoints": [],
+		"HeroIds": [1003,1002,1004],
+		"FinishOptions": [],
+		"Range": []
+	},
+	{
+		"WaveId": 21,
+		"WaveInterval": [1,2],
+		"IsBossWave": 0,
+		"MonsterIds": [2003,2004],
+		"MonsterNums": [40,10],
+		"SpawnPoints": [10,9],
+		"HeroIds": [],
+		"FinishOptions": [],
+		"Range": [4,4]
+	},
+	{
+		"WaveId": 30,
+		"WaveInterval": [1],
+		"IsBossWave": 0,
+		"MonsterIds": [],
+		"MonsterNums": [1,1,1],
+		"SpawnPoints": [],
+		"HeroIds": [1003,1002,1004],
+		"FinishOptions": [],
+		"Range": []
+	},
+	{
+		"WaveId": 31,
+		"WaveInterval": [3,2],
+		"IsBossWave": 0,
+		"MonsterIds": [2005,2006],
+		"MonsterNums": [10,1],
+		"SpawnPoints": [10,8],
+		"HeroIds": [],
+		"FinishOptions": [],
+		"Range": [4,1]
+	},
+	{
+		"WaveId": 40,
+		"WaveInterval": [1],
+		"IsBossWave": 0,
+		"MonsterIds": [],
+		"MonsterNums": [1,1],
+		"SpawnPoints": [],
+		"HeroIds": [1006,1005],
+		"FinishOptions": [],
+		"Range": []
+	},
+	{
+		"WaveId": 41,
+		"WaveInterval": [1,3],
+		"IsBossWave": 0,
+		"MonsterIds": [2013,2012],
+		"MonsterNums": [10,10],
+		"SpawnPoints": [10,9],
+		"HeroIds": [],
+		"FinishOptions": [1003,1006,1005],
+		"Range": [4,4]
+	},
+	{
+		"WaveId": 42,
+		"WaveInterval": [1,1,2],
+		"IsBossWave": 0,
+		"MonsterIds": [2012,2015,2016],
+		"MonsterNums": [20,10,1],
+		"SpawnPoints": [10,9,8],
+		"HeroIds": [],
+		"FinishOptions": [],
+		"Range": [4,4,1]
+	},
+	{
+		"WaveId": 50,
+		"WaveInterval": [1],
+		"IsBossWave": 0,
+		"MonsterIds": [],
+		"MonsterNums": [1,1,1],
+		"SpawnPoints": [],
+		"HeroIds": [1003,1006,1005],
+		"FinishOptions": [],
+		"Range": []
+	},
+	{
+		"WaveId": 51,
+		"WaveInterval": [1,2],
+		"IsBossWave": 0,
+		"MonsterIds": [2013,2014],
+		"MonsterNums": [40,10],
+		"SpawnPoints": [10,9],
+		"HeroIds": [],
+		"FinishOptions": [],
+		"Range": [4,4]
+	},
+	{
+		"WaveId": 60,
+		"WaveInterval": [1],
+		"IsBossWave": 0,
+		"MonsterIds": [],
+		"MonsterNums": [1,1,1],
+		"SpawnPoints": [],
+		"HeroIds": [1003,1006,1005],
+		"FinishOptions": [],
+		"Range": []
+	},
+	{
+		"WaveId": 61,
+		"WaveInterval": [3,2],
+		"IsBossWave": 0,
+		"MonsterIds": [2015,2016],
+		"MonsterNums": [10,1],
+		"SpawnPoints": [10,8],
+		"HeroIds": [],
+		"FinishOptions": [],
+		"Range": [4,1]
+	},
+	{
+		"WaveId": 70,
+		"WaveInterval": [1],
+		"IsBossWave": 0,
+		"MonsterIds": [],
+		"MonsterNums": [1],
+		"SpawnPoints": [],
+		"HeroIds": [1007],
+		"FinishOptions": [],
+		"Range": []
+	},
+	{
+		"WaveId": 71,
+		"WaveInterval": [3,10,1,1,1,2,2,0],
+		"IsBossWave": 0,
+		"MonsterIds": [2003,2002,2002,2005,2002,2005,2005,2006],
+		"MonsterNums": [40,0,20,20,10,10,0,1],
+		"SpawnPoints": [10,9,9,10,9,10,9,8],
+		"HeroIds": [],
+		"FinishOptions": [],
+		"Range": [4,4,4,4,4,4,4,1]
+	}
+	]
+}

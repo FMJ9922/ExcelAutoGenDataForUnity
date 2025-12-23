@@ -1,0 +1,52 @@
+{
+	"datas": [
+	{
+		"LevelId": 1,
+		"LevelName": "第一关",
+		"WaveIds": [1,2],
+		"HasWall": 0
+	},
+	{
+		"LevelId": 2,
+		"LevelName": "单人技能展示",
+		"WaveIds": [10,11,12],
+		"HasWall": 0
+	},
+	{
+		"LevelId": 3,
+		"LevelName": "场景切换",
+		"WaveIds": [20,21],
+		"HasWall": 0
+	},
+	{
+		"LevelId": 4,
+		"LevelName": "场景切换2",
+		"WaveIds": [30,31],
+		"HasWall": 0
+	},
+	{
+		"LevelId": 5,
+		"LevelName": "单人技能展示-冷",
+		"WaveIds": [40,41,42],
+		"HasWall": 0
+	},
+	{
+		"LevelId": 6,
+		"LevelName": "场景切换-冷",
+		"WaveIds": [50,51],
+		"HasWall": 0
+	},
+	{
+		"LevelId": 7,
+		"LevelName": "场景切换2-冷",
+		"WaveIds": [60,61],
+		"HasWall": 0
+	},
+	{
+		"LevelId": 8,
+		"LevelName": "单人技能展示-玩法2",
+		"WaveIds": [70,71],
+		"HasWall": 1
+	}
+	]
+}
