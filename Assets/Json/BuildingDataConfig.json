@@ -2,8 +2,23 @@
 	"datas": [
 	{
 		"Id": 1,
-		"Name": "乡村办事处",
+		"Name": "road1",
 		"ConfigType": 0
+	},
+	{
+		"Id": 2,
+		"Name": "smallHouse",
+		"ConfigType": 1
+	},
+	{
+		"Id": 3,
+		"Name": "factory1",
+		"ConfigType": 2
+	},
+	{
+		"Id": 4,
+		"Name": "bigHouse",
+		"ConfigType": 1
 	}
 	]
 }
